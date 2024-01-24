@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Stock In Report</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entry in stock_in_history %}
+        <tr>
+          <td>{{ entry.product.name }}</td>
+          <td>{{ entry.quantity }}</td>
+          <td>{{ entry.date }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Stock Out Report</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entry in stock_out_history %}
+        <tr>
+          <td>{{ entry.product.name }}</td>
+          <td>{{ entry.quantity }}</td>
+          <td>{{ entry.date }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

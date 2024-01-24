@@ -1,0 +1,49 @@
+{% comment %} {%extends 'inventory/base.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <a href="{% url 'dashboard' %}" class="btn btn-outline-primary my-3 mx-4">Go Back</a>
+    <div class = "row">
+        <div>
+            {% comment %} <h2>Stock In Report</h2> {% endcomment %}
+            {% comment %} <table>
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entry in stock_in_history %}
+                    <tr>
+                    <td>{{ entry.product.name }}</td>
+                    <td>{{ entry.quantity }}</td>
+                    <td>{{ entry.date }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table></div>
+    </div>{% endcomment %}
+
+
+    {% extends 'base.html' %} 
+{% block content %}
+  <h2>Product Report</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+        <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.quantity }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
