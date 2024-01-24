@@ -1,18 +1,19 @@
-{% extends 'base.html' %} {% block content %}
+{% comment %} {% extends 'base.html' %} {% block content %} {% endcomment %}
 <div>
   <h2>Login Report</h2>
   <div>
     <div>
       <form method="post">
-        {% csrf_token %} {{ form|crispy }}
+        {% csrf_token %} 
+        {% comment %} {{ form|crispy }} {% endcomment %}
         <button class="btn btn-primary">Sign In</button>
       </form>
     </div>
     <div>
       <small class="text-muted"
         >Need an account?
-        <a href="{% url 'signup' %}" class="ml-2">Sign Up</a></small
-      >
+        {% comment %} <a href="{% url 'signup' %}" class="ml-2">Sign Up</a></small {% endcomment %}
+      {% comment %} > {% endcomment %}
     </div>
   </div>
 </div>
@@ -35,4 +36,5 @@
     {% endfor %}
   </tbody>
 </table>
-{% endcomment %} {% endblock %}
+{% endcomment %}
+ {% comment %} {% endblock %} {% endcomment %}

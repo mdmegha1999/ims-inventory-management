@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, View, CreateView, UpdateView, DeleteView
+from django.views.generic import TemplateView, View, CreateView, UpdateView, DeleteView, ListView
 # from django.views.generic import TemplateView, View, CreateView, UpdateView, DeleteView, loginLogoutReport
 
 # , loginLogoutReport
@@ -94,21 +94,21 @@ class DeleteItem(LoginRequiredMixin, DeleteView):
 	success_url = reverse_lazy('dashboard')
 	context_object_name = 'item'
 # #J9!aLp2wZ$
-# class ProductReports(ListView):
-#     model = InventoryItem
-#     template_name = 'inventory/products_reports.html'
-#     context_object_name = 'items'
+class ProductReports(LoginRequiredMixin, ListView):
+    model = InventoryItem
+    template_name = 'inventory/products_reports.html'
+    context_object_name = 'items'
     
-# class stock_reports(ListView):
-#     model = InventoryItem
-#     template_name = 'inventory/stock_reports.html'
-#     # context_object_name = 'items'
+class StockView(LoginRequiredMixin, TemplateView):
+    model = InventoryItem
+    template_name = 'inventory/stock_reports.html'
+    # context_object_name = 'items'
 #     # return render(request, 'stock_reports.html', {'stock_in_history': stock_in_history, 'stock_out_history': stock_out_history})
     
 
 # # def product_report(request):
 # #     products = Product.objects.all()
 # #     return render(request, 'product_report.html', {'products': products})
-# class LoginLogoutReportView(TemplateView):  # Updated class name
-#     model = InventoryItem
-#     template_name = 'inventory/login_logout_report.html'
+class LoginLogoutReportView(LoginRequiredMixin, TemplateView):  # Updated class name
+    model = InventoryItem
+    template_name = 'inventory/login_logout_report.html'

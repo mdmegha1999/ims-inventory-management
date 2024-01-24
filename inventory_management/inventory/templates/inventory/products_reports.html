@@ -27,7 +27,7 @@
     </div>{% endcomment %}
 
 
-    {% extends 'base.html' %} 
+    {% comment %} {% extends 'base.html' %} 
 {% block content %}
   <h2>Product Report</h2>
   <table>
@@ -46,4 +46,39 @@
       {% endfor %}
     </tbody>
   </table>
-{% endblock %}
+{% endblock %} {% endcomment %}
+
+
+
+
+
+{% comment %} {% extends 'inventory/base.html' %} {% endcomment %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% if messages %}
+        <div class="row mt-3">
+            {% for message in messages %}
+                <div class="col-md-10 col-12 mx-auto alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-10 col-12 mx-auto mt-5">
+            <div class="d-flex justify-content-end">
+              <a href="{% url 'dashboard' %}" class="btn btn-outline-primary my-3 mx-4">Go Back</a>
+
+                {% comment %} <a href="{% url 'add-item' %}" class="btn btn-primary">+</a> {% endcomment %}
+                <a href="{% url 'product-reports' %}" class="btn btn-primary">Report</a>
+                <a href="{% url 'stock_reports' %}" class="btn btn-primary">Stock Report</a>
+                <a href="{% url 'login_logout_report' %}" class="btn btn-primary">Login/Logout Report</a>
+            </div>
+
+            <table class="table table-hover table-striped">
+                <!-- ... rest of the content ... -->
+            </table>
+        </div>
+    </div>
+{% endblock content %}
