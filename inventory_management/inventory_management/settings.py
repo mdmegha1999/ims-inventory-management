@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-w07&5gwrdk==i^43uy8szu2ftmy_-izw!_-((jd!p-e5l)whj6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".vercel.app",'.now.sh']
 
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -135,3 +136,9 @@ LOW_QUANTITY = 3
 # settings.py
 
 # CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+
+import os
+STATIC_URL = 'static/'
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
